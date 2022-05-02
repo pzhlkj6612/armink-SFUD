@@ -51,11 +51,11 @@
 #define STM32_SRAM_SIZE         128
 #define STM32_SRAM_END          (SRAM_BASE + STM32_SRAM_SIZE * 1024)
 
-#define USER_APP_ENTRY          (FLASH_BASE + 384 * 1024)  /* Ӧ�ó�����ڵ�ַ384Kλ�� */
-#define BAK_SECTOIN_ADDR        (FLASH_BASE + 640 * 1024)  /* ��������ڵ�ַ  640Kλ�� */
-//#define VECT_TAB_FLASH                                     /* ����Flash�洢��������ʽ */
-#define VECT_TAB_USER                                      /* �����û��Զ�����������ʽ */
-#define USER_VECTOR_TABLE       USER_APP_ENTRY-NVIC_VectTab_FLASH /* �û��Զ����ж�������λ�� */
+#define USER_APP_ENTRY          (FLASH_BASE + 384 * 1024)  /* 应用程序入口地址384K位置 */
+#define BAK_SECTOIN_ADDR        (FLASH_BASE + 640 * 1024)  /* 备份区入口地址  640K位置 */
+//#define VECT_TAB_FLASH                                     /* 采用Flash存储向量表方式 */
+#define VECT_TAB_USER                                      /* 采用用户自定义向量表方式 */
+#define USER_VECTOR_TABLE       USER_APP_ENTRY-NVIC_VectTab_FLASH /* 用户自定义中断向量表位置 */
 
 /* RT_USING_UART */
 #define RT_USING_UART1
@@ -76,7 +76,7 @@
 /***********************************************************************************************************/
 
 
-//����Ӳ���汾�Ŷ���
+//软、硬件版本号定义
 #define VERSION_SOFTWARE_MAJOR		1
 #define VERSION_SOFTWARE_MINOR		0
 #define VERSION_HARDWARE_MAJOR 		1

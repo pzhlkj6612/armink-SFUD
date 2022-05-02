@@ -1,7 +1,7 @@
 /*
  * user_finsh_cmd.c
  *
- *  Created on: 2013Äê12ÔÂ7ÈÕ
+ *  Created on: 2013å¹´12æœˆ7æ—¥
  *      Author: Armink
  */
 #include <rthw.h>
@@ -27,7 +27,7 @@ static void get_cpuusage(void) {
 }
 MSH_CMD_EXPORT(get_cpuusage, Get control board cpu usage);
 
-#define FILE_FLASH_ADDR                     0 /* ´«ÊäµÄ Flash Ä¿±êµØÖ· */
+#define FILE_FLASH_ADDR                     0 /* ä¼ è¾“çš„ Flash ç›®æ ‡åœ°å€ */
 
 extern rt_spi_flash_device_t w25q128;
 static uint32_t ymodem_file_total_size, ymodem_file_cur_size;

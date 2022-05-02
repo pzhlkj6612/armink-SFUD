@@ -2,11 +2,11 @@
 
 *.S text
 *.asm text
-*.c text
+*.c text working-tree-encoding=gb2312
 *.cc text
 *.cpp text
 *.cxx text
-*.h text
+*.h text working-tree-encoding=gb2312
 *.htm text
 *.html text
 *.in text
