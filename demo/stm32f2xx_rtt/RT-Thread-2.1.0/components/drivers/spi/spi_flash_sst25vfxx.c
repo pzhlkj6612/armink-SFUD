@@ -33,7 +33,7 @@
 #define FLASH_TRACE(...)
 #endif /* #ifdef FLASH_DEBUG */
 
-/* JEDEC Manufacturer¡¯s ID */
+/* JEDEC Manufacturerâ€™s ID */
 #define MF_ID                       (0xBF)
 /* JEDEC Device ID : Memory Type */
 #define MT_ID                       (0x25)
@@ -290,7 +290,7 @@ rt_err_t sst25vfxx_init(const char * flash_device_name, const char * spi_device_
 
         if(id_recv[0] != MF_ID || id_recv[1] != MT_ID)
         {
-            FLASH_TRACE("Manufacturer¡¯s ID or Memory Type error!\r\n");
+            FLASH_TRACE("Manufacturerâ€™s ID or Memory Type error!\r\n");
             FLASH_TRACE("JEDEC Read-ID Data : %02X %02X %02X\r\n", id_recv[0], id_recv[1], id_recv[2]);
             return -RT_ENOSYS;
         }

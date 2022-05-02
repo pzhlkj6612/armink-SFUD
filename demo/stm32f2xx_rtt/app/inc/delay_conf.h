@@ -36,16 +36,16 @@
 
 #endif
 
-#define DELAY_SYS_INIT_LED_ON       DELAY_MS(90)   //ϵͳ��ʼ��ָʾ������ʱ
-#define DELAY_SYS_INIT_LED_OFF      DELAY_MS(10)   //ϵͳ��ʼ��ָʾ������ʱ
-#define DELAY_SYS_RUN_LED_ON        DELAY_MS(960) //ϵͳ��������ָʾ������ʱ
-#define DELAY_SYS_RUN_LED_OFF       DELAY_MS(40)  //ϵͳ��������ָʾ������ʱ
-#define DELAY_SYS_FAULT_LED_ON      DELAY_MS(40)   //ϵͳ��������ָʾ������ʱ
-#define DELAY_SYS_FAULT_LED_OFF     DELAY_MS(960)  //ϵͳ��������ָʾ������ʱ
+#define DELAY_SYS_INIT_LED_ON       DELAY_MS(90)   //系统初始化指示灯亮延时
+#define DELAY_SYS_INIT_LED_OFF      DELAY_MS(10)   //系统初始化指示灯灭延时
+#define DELAY_SYS_RUN_LED_ON        DELAY_MS(960) //系统正常运行指示灯亮延时
+#define DELAY_SYS_RUN_LED_OFF       DELAY_MS(40)  //系统正常运行指示灯灭延时
+#define DELAY_SYS_FAULT_LED_ON      DELAY_MS(40)   //系统故障运行指示灯亮延时
+#define DELAY_SYS_FAULT_LED_OFF     DELAY_MS(960)  //系统故障运行指示灯灭延时
 
-#define DELAY_SYS_SLEEP_LED			DELAY_MS(1000) //ϵͳ˯��ָʾ����ʱ1s
-#define POLL_CONNECT_CLOUD			DELAY_MS(100)  //��ѯ���ӵ������Ʒ�����������ʱ��
-#define TIMEOUT_CONNECT_CLOUD		DELAY_S(30)    //���ӵ������Ʒ������ĳ�ʱʱ��
+#define DELAY_SYS_SLEEP_LED			DELAY_MS(1000) //系统睡眠指示灯延时1s
+#define POLL_CONNECT_CLOUD			DELAY_MS(100)  //轮询连接到白象云服务器的周期时间
+#define TIMEOUT_CONNECT_CLOUD		DELAY_S(30)    //连接到白象云服务器的超时时间
 
 
 #endif  

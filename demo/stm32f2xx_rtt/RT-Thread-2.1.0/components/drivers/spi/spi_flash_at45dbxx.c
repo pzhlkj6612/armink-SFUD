@@ -34,7 +34,7 @@
 #define FLASH_TRACE(...)
 #endif /**< #ifdef FLASH_DEBUG */
 
-/* JEDEC Manufacturer¡¯s ID */
+/* JEDEC Manufacturerâ€™s ID */
 #define MF_ID                (0x1F) /* atmel */
 #define DENSITY_CODE_011D    (0x02) /* AT45DB011D Density Code : 00010 = 1-Mbit */
 #define DENSITY_CODE_021D    (0x03) /* AT45DB021D Density Code : 00011 = 2-Mbit */
@@ -345,7 +345,7 @@ rt_err_t at45dbxx_init(const char * flash_device_name, const char * spi_device_n
         /**< 001 = Atmel DataFlash */
         if(JEDEC_ID->manufacturer_id != 0x1F || JEDEC_ID->family_code != 0x01)
         {
-            FLASH_TRACE("Manufacturer¡¯s ID or Memory Type error!\r\n");
+            FLASH_TRACE("Manufacturerâ€™s ID or Memory Type error!\r\n");
             FLASH_TRACE("JEDEC Read-ID Data : %02X %02X %02X\r\n", id_recv[0], id_recv[1], id_recv[2]);
             return -RT_ENOSYS;
         }

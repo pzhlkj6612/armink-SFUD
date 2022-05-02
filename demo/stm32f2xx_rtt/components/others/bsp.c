@@ -33,7 +33,7 @@
 *                                       LOCAL GLOBAL VARIABLES
 *********************************************************************************************************
 */
-uint16_t ADC1ConvertedValue[12];//µ¥´ÎAD×ª»»Öµ
+uint16_t ADC1ConvertedValue[12];//å•æ¬¡ADè½¬æ¢å€¼
 /*
 *********************************************************************************************************
 *                                      LOCAL FUNCTION PROTOTYPES
@@ -48,42 +48,42 @@ void rt_hw_board_init()
 	rt_console_set_device(RT_CONSOLE_DEVICE_NAME);
 }
 
-//******************************Ê±ÖÓÅäÖÃº¯Êý***************************************
-//º¯Êý¶¨Òå: static void RCC_Configuration(void)
-//º¯Êý¹¦ÄÜ£ºÅäÖÃËùÓÐ¹¦ÄÜÄ£¿éµÄÊ±ÖÓ
-//Èë¿Ú²ÎÊý£ºÎÞ
-//³ö¿Ú²ÎÊý£ºÎÞ
-//±¸    ×¢£ºEditor£ºZuohao 2013-08-29    Company: BXXJS
+//******************************æ—¶é’Ÿé…ç½®å‡½æ•°***************************************
+//å‡½æ•°å®šä¹‰: static void RCC_Configuration(void)
+//å‡½æ•°åŠŸèƒ½ï¼šé…ç½®æ‰€æœ‰åŠŸèƒ½æ¨¡å—çš„æ—¶é’Ÿ
+//å…¥å£å‚æ•°ï¼šæ— 
+//å‡ºå£å‚æ•°ï¼šæ— 
+//å¤‡    æ³¨ï¼šEditorï¼šZuohao 2013-08-29    Company: BXXJS
 //**********************************************************************
 static void RCC_Configuration(void)
 {
     RCC_ClocksTypeDef rcc_clocks;
 
 	RCC_GetClocksFreq(&rcc_clocks);
-	/* È·¶¨¾§ÕñÍêÈ«ÆðÕñ */
+	/* ç¡®å®šæ™¶æŒ¯å®Œå…¨èµ·æŒ¯ */
 	RT_ASSERT(rcc_clocks.HCLK_Frequency == 120000000);
 
-	//ÏÂÃæÊÇ¸ø¸÷Ä£¿é¿ªÆôÊ±ÖÓ
-    //Æô¶¯GPIO
+	//ä¸‹é¢æ˜¯ç»™å„æ¨¡å—å¼€å¯æ—¶é’Ÿ
+    //å¯åŠ¨GPIO
     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA | RCC_AHB1Periph_GPIOB | \
                            RCC_AHB1Periph_GPIOC | RCC_AHB1Periph_GPIOD | \
                            RCC_AHB1Periph_GPIOE | RCC_AHB1Periph_GPIOG,
                            ENABLE);
 
-	//Æô¶¯USART1Ê±ÖÓ
+	//å¯åŠ¨USART1æ—¶é’Ÿ
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
-	//Æô¶¯USART2Ê±ÖÓ
+	//å¯åŠ¨USART2æ—¶é’Ÿ
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
 	/* Enable WWDG clock */
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_WWDG, ENABLE);
 }
 
-//********************************NVICÅäÖÃº¯Êý***************************************
-//º¯Êý¶¨Òå: void NVIC_Configuration(void)
-//º¯Êý¹¦ÄÜ£ºNVIC²ÎÊýÅäÖÃ
-//Èë¿Ú²ÎÊý£ºÎÞ
-//³ö¿Ú²ÎÊý£ºÎÞ
-//±¸    ×¢£ºEditor£ºZuohao 2013-08-29    Company: BXXJS
+//********************************NVICé…ç½®å‡½æ•°***************************************
+//å‡½æ•°å®šä¹‰: void NVIC_Configuration(void)
+//å‡½æ•°åŠŸèƒ½ï¼šNVICå‚æ•°é…ç½®
+//å…¥å£å‚æ•°ï¼šæ— 
+//å‡ºå£å‚æ•°ï¼šæ— 
+//å¤‡    æ³¨ï¼šEditorï¼šZuohao 2013-08-29    Company: BXXJS
 //**********************************************************************************
 static void NVIC_Configuration(void)
 {
@@ -100,22 +100,22 @@ static void NVIC_Configuration(void)
     NVIC_SetVectorTable(NVIC_VectTab_FLASH, USER_VECTOR_TABLE);
 #endif
 
-	//ÉèÖÃNVICÓÅÏÈ¼¶·Ö×éÎªGroup2£º0-3ÇÀÕ¼Ê½ÓÅÏÈ¼¶£¬0-3µÄÏìÓ¦Ê½ÓÅÏÈ¼¶
+	//è®¾ç½®NVICä¼˜å…ˆçº§åˆ†ç»„ä¸ºGroup2ï¼š0-3æŠ¢å å¼ä¼˜å…ˆçº§ï¼Œ0-3çš„å“åº”å¼ä¼˜å…ˆçº§
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 
-	//´°¿Ú¿´ÃÅ¹·ÖÐ¶ÏÅäÖÃ
+	//çª—å£çœ‹é—¨ç‹—ä¸­æ–­é…ç½®
 	NVIC_InitStructure.NVIC_IRQChannel = WWDG_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 }
-//******************************GPIOÅäÖÃº¯Êý***************************************
-//º¯Êý¶¨Òå: static void GPIO_Configuration(void)
-//º¯Êý¹¦ÄÜ£ºÅäÖÃËùÓÐGPIOÒý½Å¹¦ÄÜ
-//Èë¿Ú²ÎÊý£ºÎÞ
-//³ö¿Ú²ÎÊý£ºÎÞ
-//±¸    ×¢£ºEditor£ºZuohao 2013-08-29    Company: BXXJS
+//******************************GPIOé…ç½®å‡½æ•°***************************************
+//å‡½æ•°å®šä¹‰: static void GPIO_Configuration(void)
+//å‡½æ•°åŠŸèƒ½ï¼šé…ç½®æ‰€æœ‰GPIOå¼•è„šåŠŸèƒ½
+//å…¥å£å‚æ•°ï¼šæ— 
+//å‡ºå£å‚æ•°ï¼šæ— 
+//å¤‡    æ³¨ï¼šEditorï¼šZuohao 2013-08-29    Company: BXXJS
 //**********************************************************************
 static void GPIO_Configuration(void)
 {
@@ -137,7 +137,7 @@ static void GPIO_Configuration(void)
     GPIO_Init(GPIOF, &GPIO_InitStructure);
     GPIO_Init(GPIOG, &GPIO_InitStructure);
 
-    /******************ÏµÍ³ÔËÐÐLEDÖ¸Ê¾µÆÅäÖÃ*******************/
+    /******************ç³»ç»Ÿè¿è¡ŒLEDæŒ‡ç¤ºç¯é…ç½®*******************/
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
     GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
@@ -146,29 +146,29 @@ static void GPIO_Configuration(void)
     GPIO_Init(GPIOC, &GPIO_InitStructure);
 }
 
-//*******************³õÊ¼»¯¶ÀÁ¢¿´ÃÅ¹·*************************************
-//º¯Êý¶¨Òå: void IWDG_Configuration(void) 
-//Ãè    Êö£º³õÊ¼»¯¶ÀÁ¢¿´ÃÅ¹·
-//Èë¿Ú²ÎÊý£ºÎÞ
-//³ö¿Ú²ÎÊý£ºÎÞ
-//±¸    ×¢£º·ÖÆµÒò×Ó=4*2^prer.µ«×î´óÖµÖ»ÄÜÊÇ256!Ê±¼ä¼ÆËã(´ó¸Å):Tout=40K/((4*2^prer)*rlr)Öµ	 3S³¬Ê±
-//Editor£ºliuqh 2013-1-16  Company: BXXJS
+//*******************åˆå§‹åŒ–ç‹¬ç«‹çœ‹é—¨ç‹—*************************************
+//å‡½æ•°å®šä¹‰: void IWDG_Configuration(void) 
+//æ    è¿°ï¼šåˆå§‹åŒ–ç‹¬ç«‹çœ‹é—¨ç‹—
+//å…¥å£å‚æ•°ï¼šæ— 
+//å‡ºå£å‚æ•°ï¼šæ— 
+//å¤‡    æ³¨ï¼šåˆ†é¢‘å› å­=4*2^prer.ä½†æœ€å¤§å€¼åªèƒ½æ˜¯256!æ—¶é—´è®¡ç®—(å¤§æ¦‚):Tout=40K/((4*2^prer)*rlr)å€¼	 3Sè¶…æ—¶
+//Editorï¼šliuqh 2013-1-16  Company: BXXJS
 //*******************************************************************
 static void IWDG_Configuration(void) 
 {
-	IWDG_WriteAccessCmd(IWDG_WriteAccess_Enable);//Ê¹ÄÜ¶ÔIWDG->PRºÍIWDG->RLRµÄÐ´
-	IWDG_SetPrescaler(IWDG_Prescaler_64);//64·ÖÆµ
+	IWDG_WriteAccessCmd(IWDG_WriteAccess_Enable);//ä½¿èƒ½å¯¹IWDG->PRå’ŒIWDG->RLRçš„å†™
+	IWDG_SetPrescaler(IWDG_Prescaler_64);//64åˆ†é¢‘
 	IWDG_SetReload(1875);
 	IWDG_ReloadCounter();
 	IWDG_Enable();
 }
-//*******************Î¹¶ÀÁ¢¿´ÃÅ¹·*************************************
-//º¯Êý¶¨Òå: void IWDG_Feed(void)
-//Ãè    Êö£º³õÊ¼»¯¶ÀÁ¢¿´ÃÅ¹·
-//Èë¿Ú²ÎÊý£ºÎÞ
-//³ö¿Ú²ÎÊý£ºprer:·ÖÆµÊý:0~7(Ö»ÓÐµÍ3Î»ÓÐÐ§!)£¬rlr:ÖØ×°ÔØ¼Ä´æÆ÷Öµ:µÍ11Î»ÓÐÐ§.
-//±¸    ×¢£º·ÖÆµÒò×Ó=4*2^prer.µ«×î´óÖµÖ»ÄÜÊÇ256!Ê±¼ä¼ÆËã(´ó¸Å):Tout=40K/((4*2^prer)*rlr)Öµ
-//Editor£ºliuqh 2013-1-16  Company: BXXJS
+//*******************å–‚ç‹¬ç«‹çœ‹é—¨ç‹—*************************************
+//å‡½æ•°å®šä¹‰: void IWDG_Feed(void)
+//æ    è¿°ï¼šåˆå§‹åŒ–ç‹¬ç«‹çœ‹é—¨ç‹—
+//å…¥å£å‚æ•°ï¼šæ— 
+//å‡ºå£å‚æ•°ï¼šprer:åˆ†é¢‘æ•°:0~7(åªæœ‰ä½Ž3ä½æœ‰æ•ˆ!)ï¼Œrlr:é‡è£…è½½å¯„å­˜å™¨å€¼:ä½Ž11ä½æœ‰æ•ˆ.
+//å¤‡    æ³¨ï¼šåˆ†é¢‘å› å­=4*2^prer.ä½†æœ€å¤§å€¼åªèƒ½æ˜¯256!æ—¶é—´è®¡ç®—(å¤§æ¦‚):Tout=40K/((4*2^prer)*rlr)å€¼
+//Editorï¼šliuqh 2013-1-16  Company: BXXJS
 //*******************************************************************
 void IWDG_Feed(void)
 {
@@ -248,7 +248,7 @@ void  BSP_Init (void)
 	NVIC_Configuration();
 	SysTick_Configuration();
 	GPIO_Configuration();
-//	TODO  ·½±ãµ÷ÊÔ£¬ÔÝÊ±×¢ÊÍ¿´ÃÅ¹·£¬ÕýÊ½·¢²¼Ê±ÐèÒª´ò¿ª
+//	TODO  æ–¹ä¾¿è°ƒè¯•ï¼Œæš‚æ—¶æ³¨é‡Šçœ‹é—¨ç‹—ï¼Œæ­£å¼å‘å¸ƒæ—¶éœ€è¦æ‰“å¼€
 // 	IWDG_Configuration();
 }
 

@@ -93,7 +93,7 @@ static rt_err_t rt_sfud_control(rt_device_t dev, rt_uint8_t cmd, void *args) {
 static rt_size_t rt_sfud_read(rt_device_t dev, rt_off_t pos, void* buffer, rt_size_t size) {
     struct spi_flash_device *rtt_dev = (struct spi_flash_device *) (dev->user_data);
     sfud_flash *sfud_dev = (sfud_flash *) (rtt_dev->user_data);
-    /* change the block device¡¯s logic address to physical address */
+    /* change the block deviceâ€™s logic address to physical address */
     rt_off_t phy_pos = pos * rtt_dev->geometry.bytes_per_sector;
     rt_size_t phy_size = size * rtt_dev->geometry.bytes_per_sector;
 
@@ -107,7 +107,7 @@ static rt_size_t rt_sfud_read(rt_device_t dev, rt_off_t pos, void* buffer, rt_si
 static rt_size_t rt_sfud_write(rt_device_t dev, rt_off_t pos, const void* buffer, rt_size_t size) {
     struct spi_flash_device *rtt_dev = (struct spi_flash_device *) (dev->user_data);
     sfud_flash *sfud_dev = (sfud_flash *) (rtt_dev->user_data);
-    /* change the block device¡¯s logic address to physical address */
+    /* change the block deviceâ€™s logic address to physical address */
     rt_off_t phy_pos = pos * rtt_dev->geometry.bytes_per_sector;
     rt_size_t phy_size = size * rtt_dev->geometry.bytes_per_sector;
 

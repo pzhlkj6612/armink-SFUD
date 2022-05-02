@@ -11,16 +11,16 @@
 #define SW_VER_LENGTH        3
 #define HW_VER_LENGTH        2
 
-/* µ±Ç°ÏµÍ³×´Ì¬ */
+/* å½“å‰ç³»ç»ŸçŠ¶æ€ */
 static SystemStatus cur_system_status = SYSTEM_STATUS_INIT;
 
-//Èí¼ş°æ±¾ºÅ¶¨Òå
+//è½¯ä»¶ç‰ˆæœ¬å·å®šä¹‰
 const char sw_ver_name[] @ ".version" = "swver";
 const char sw_ver_value[] @ ".version" = "0.06.23";
-//Ó²¼ş°æ±¾ºÅ¶¨Òå
+//ç¡¬ä»¶ç‰ˆæœ¬å·å®šä¹‰
 const char hw_ver_name[] @ ".version" = "hwver";
 const char hw_ver_value[] @ ".version" = "1.0";
-//ÈíÓ²¼ş°æ±¾£¬¸ù¾İÉÏÃæµÄ¶¨Òå£¬È·¶¨Î»Êı
+//è½¯ç¡¬ä»¶ç‰ˆæœ¬ï¼Œæ ¹æ®ä¸Šé¢çš„å®šä¹‰ï¼Œç¡®å®šä½æ•°
 static uint8_t software_version[SW_VER_LENGTH] = { 0 };
 static uint8_t hardware_version[HW_VER_LENGTH] = { 0 };
 
