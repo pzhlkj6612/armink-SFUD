@@ -15,15 +15,15 @@
   *          is using in the C source code, usually in main.c. This file contains:
   *           - Configuration section that allows to select:
   *              - The device used in the target application
-  *              - To use or not the peripheral抯 drivers in application code(i.e. 
-  *                code will be based on direct access to peripheral抯 registers 
+  *              - To use or not the peripheral鈥檚 drivers in application code(i.e. 
+  *                code will be based on direct access to peripheral鈥檚 registers 
   *                rather than drivers API), this option is controlled by 
   *                "#define USE_STDPERIPH_DRIVER"
   *              - To change few application-specific parameters such as the HSE 
   *                crystal frequency
   *           - Data structures and the address mapping for all peripherals
   *           - Peripheral's registers declarations and bits definition
-  *           - Macros to access peripheral抯 registers hardware
+  *           - Macros to access peripheral鈥檚 registers hardware
   *
   ******************************************************************************
   * @attention
@@ -516,7 +516,7 @@ typedef __I uint32_t vuc32;  /*!< Read Only */
 typedef __I uint16_t vuc16;  /*!< Read Only */
 typedef __I uint8_t vuc8;   /*!< Read Only */
 
-//TODO 由于在其它头文件中宏定义了FALSE和TRUE，此处注释掉
+//TODO 鐢变簬鍦ㄥ叾瀹冨ご鏂囦欢涓畯瀹氫箟浜咶ALSE鍜孴RUE锛屾澶勬敞閲婃帀
 // #ifndef __cplusplus
 // typedef enum {FALSE = 0, TRUE = !FALSE} bool;
 // #endif

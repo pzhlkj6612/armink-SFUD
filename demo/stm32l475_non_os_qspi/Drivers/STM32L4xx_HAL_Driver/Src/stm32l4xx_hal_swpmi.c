@@ -305,10 +305,10 @@ HAL_StatusTypeDef HAL_SWPMI_Init(SWPMI_HandleTypeDef *hswpmi)
     /* Apply Voltage class selection */
     MODIFY_REG(hswpmi->Instance->OR, SWPMI_OR_CLASS, hswpmi->Init.VoltageClass);
 
-    /* If Voltage class B, apply 300 µs delay */
+    /* If Voltage class B, apply 300 ?s delay */
     if(hswpmi->Init.VoltageClass == SWPMI_VOLTAGE_CLASS_B)
     {
-      /* Insure 300 µs wait to insure SWPMI_IO output not higher than 1.8V */
+      /* Insure 300 ?s wait to insure SWPMI_IO output not higher than 1.8V */
       /* Wait loop initialization and execution                            */
       /* Note: Variable divided by 4 to compensate partially CPU processing cycles. */
       wait_loop_index = (300 * (SystemCoreClock / (1000000 * 4))) + 150;
